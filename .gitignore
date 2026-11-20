@@ -1,8 +1,9 @@
-node_modules/
-build/
-dist/
+node_modules
+dist
 .env
-.vscode/
-.idea/
+.env.local
+*.log
 .DS_Store
-Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+.idea

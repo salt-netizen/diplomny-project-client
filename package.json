@@ -1,0 +1,38 @@
+{
+  "name": "diplomny-project-client",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "format": "prettier --write \"src/**/*.{js,jsx,css}\""
+  },
+  "dependencies": {
+    "@microsoft/signalr": "^8.0.7",
+    "axios": "^1.10.0",
+    "date-fns": "^4.1.0",
+    "leaflet": "^1.9.4",
+    "react": "^19.1.0",
+    "react-datepicker": "^8.4.0",
+    "react-dom": "^19.1.0",
+    "react-hook-form": "^7.60.0",
+    "react-leaflet": "^5.0.0",
+    "react-router-dom": "^7.6.0",
+    "recharts": "^3.0.0",
+    "swiper": "^11.2.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.30.0",
+    "@vitejs/plugin-react": "^4.6.0",
+    "eslint": "^9.30.0",
+    "eslint-config-prettier": "^10.1.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.20",
+    "globals": "^16.3.0",
+    "prettier": "^3.6.0",
+    "vite": "^7.0.0"
+  }
+}

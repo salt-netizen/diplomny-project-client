@@ -1,21 +1,71 @@
 # diplomny-project-client
 
-Клієнтська частина проєкту "клон Booking.com".
+Клієнтська частина проєкту "клон Booking.com"
+
+Команда frontend: Дем'яненко Олексій, Василенко Максим
 
 ## Технології
-- React
 
-## Вимоги
-- Node.js 
+- React + Vite, JavaScript
+- React Router (маршрутизація)
+- Axios (запити до API)
+- React Hook Form (форми)
+- React Datepicker, date-fns (дати)
+- Swiper (галерея фото)
+- Leaflet + OpenStreetMap (карта)
+- @microsoft/signalr (чат і сповіщення)
+- Recharts (графіки статистики в адмін-панелі)
+- CSS Modules (стилі)
+- ESLint, Prettier
 
 ## Запуск
-1. Клонувати репозиторій
-2. `npm install`
-3. Створити `.env` з адресою API (`REACT_APP_API_URL=...`)
-4. `npm start`
+
+Потрібен Node.js 20 або новіший
+
+```
+npm install
+cp .env.example .env
+npm run dev
+```
+
+Сайт відкриється на http://localhost:5173
+
+У файлі `.env` вказати адресу сервера ASP.NET Core (`VITE_BACKEND_URL`). Усі запити на `/api` перенаправляються на цей сервер
 
 ## Зв'язок із сервером
-Клієнт звертається до API серверної частини: посилання на репозиторій сервера.
 
-## Команда
-- Дем'яненко Олексій, Василенко Максим — frontend
+Клієнт звертається до API серверної частини (ASP.NET Core). Документація API у Swagger
+
+## Команди
+
+- `npm run dev` - запуск для розробки
+- `npm run build` - збірка
+- `npm run lint` - перевірка коду
+- `npm run format` - форматування коду
+
+## Структура
+
+```
+src/
+  api/          підключення до API (axios)
+  context/      авторизація (AuthContext)
+  routes/       захищені маршрути
+  components/   спільні компоненти (шапка, підвал)
+  pages/        сторінки
+  styles/       кольори, шрифти, загальні стилі
+```
+
+## Сторінки
+
+| Адреса | Сторінка | Доступ |
+| --- | --- | --- |
+| / | Головна | усі |
+| /search | Результати пошуку | усі |
+| /property/:id | Сторінка житла | усі |
+| /tour/:id | Сторінка туру | усі |
+| /login | Вхід | усі |
+| /register | Реєстрація | усі |
+| /forgot-password | Відновлення пароля | усі |
+| /reset-password | Новий пароль | усі |
+| /booking/:type/:id | Бронювання та оплата | після входу |
+| /account | Особистий кабінет | після входу |
