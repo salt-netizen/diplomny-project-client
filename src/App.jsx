@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 
 import Layout from './components/layout/Layout.jsx';
 import ProtectedRoute from './routes/ProtectedRoute.jsx';
@@ -14,6 +14,12 @@ import ResetPasswordPage from './pages/ResetPasswordPage.jsx';
 import BookingPage from './pages/BookingPage.jsx';
 import AccountPage from './pages/AccountPage.jsx';
 import NotFoundPage from './pages/NotFoundPage.jsx';
+
+import OwnerPropertiesPage from './pages/owner/OwnerPropertiesPage.jsx';
+import OwnerPropertyFormPage from './pages/owner/OwnerPropertyFormPage.jsx';
+import OwnerBookingsPage from './pages/owner/OwnerBookingsPage.jsx';
+import ManagerDashboardPage from './pages/manager/ManagerDashboardPage.jsx';
+import AdminDashboardPage from './pages/admin/AdminDashboardPage.jsx';
 
 export default function App() {
   return (
@@ -31,6 +37,22 @@ export default function App() {
         <Route element={<ProtectedRoute />}>
           <Route path="/booking/:type/:id" element={<BookingPage />} />
           <Route path="/account" element={<AccountPage />} />
+        </Route>
+
+        <Route element={<ProtectedRoute allowedRoles={['owner', 'admin']} />}>
+          <Route path="/owner" element={<Navigate to="/owner/properties" replace />} />
+          <Route path="/owner/properties" element={<OwnerPropertiesPage />} />
+          <Route path="/owner/properties/new" element={<OwnerPropertyFormPage />} />
+          <Route path="/owner/properties/:id/edit" element={<OwnerPropertyFormPage />} />
+          <Route path="/owner/bookings" element={<OwnerBookingsPage />} />
+        </Route>
+
+        <Route element={<ProtectedRoute allowedRoles={['manager', 'admin']} />}>
+          <Route path="/manager" element={<ManagerDashboardPage />} />
+        </Route>
+
+        <Route element={<ProtectedRoute allowedRoles={['admin']} />}>
+          <Route path="/admin" element={<AdminDashboardPage />} />
         </Route>
 
         <Route path="*" element={<NotFoundPage />} />
